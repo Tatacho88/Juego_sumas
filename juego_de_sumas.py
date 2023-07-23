@@ -9,23 +9,25 @@ root.config(bg="pink")
 root.resizable(0,0)
 
 #-----variables-------------
-
-a= randint(0, 10)
-b= randint(0, 10)
-total = a + b
-
+a = 0
+b = 0
+total = None
 #-----funciones-------------
 
 def mostar_sumas(a, b): 
+    a = randint(0, 10)
+    b = randint(0, 10)
+    global total
+    total = a + b
     label = Label(root, text=f"Cuanto es {a}+{b}?", bg="pink", fg="purple", font=("arial", 20))
     label.grid(row=0, column=0, columnspan=4)
 
 def igual():
-    global total
     total_usuario = entrada.get()
     if str(total) == total_usuario:
         label1.config(text="Tu resultado está bien")
-        mostar_sumas(a,b)
+        entrada.delete(0, END)
+        mostar_sumas(a, b)
     else:
         label1.config(text="Sigue intentándolo")
  
